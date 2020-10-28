@@ -19,40 +19,32 @@ public class Snake {
         }
     }
 
-    //TODO test
     public void eat(){
         //Add new point - point is same as last, which will make it "grow" when the rest move
         for (int i = 0; i < 3; i++){
-            body[size] = new Point(body[size-1].x, body[size-1].y);
+            body[size] = new Point(body[size-1].getX(), body[size-1].getY());
             size++;
         }
     }
 
     //we check if the heads position matches any points on the body
-    //TODO sometimes bugs
     public void selfCollide(){
         for(int i = 1; i < size; i++){
-            if (body[0].x == body[i].x && body[0].y == body[i].y){
-                    System.out.println("Head: " + body[0].x + ", " + body[0].y);
-                    System.out.println("Index hit: " + i + " XY: " + body[i].x + ", " + body[i].y);
-                    System.out.println("Did i really hit myself?" + (body[0].x == body[i].x && body[0].y == body[i].y));
-                    Main.play = false;
+            if (body[0].getX() == body[i].getX() && body[0].getY() == body[i].getY()) {
+                Game.play = false;
+                break;
             }
         }
     }
 
-    public boolean withinBoard(Board board){
-        if (body[0].x < 0 || body[0].y < 0 ||
-        body[0].x >= Board.getWidth() || body[0].y >= Board.getHeight()){
-            return false;
-        }
-        //within board bounds
-        return true;
+    public boolean withinBoard(){
+        return body[0].getX() >= 0 && body[0].getY() >= 0 && body[0].getX() < Board.getWidth() && body[0].getY() < Board.getHeight();
     }
 
+    //checks if snake's body contains coordinates (maybe also check head?
     public boolean contains(int x, int y){
         for(int i = 1; i < size; i++){
-            if(body[i].x == x && body[i].y == y){
+            if(body[i].getX() == x && body[i].getY() == y){
                 return true;
             }
         }
@@ -63,11 +55,6 @@ public class Snake {
         if(snake == null) {
             snake = new Snake();
         }
-        return snake;
-    }
-
-    public Snake resetSnake(int x, int y){
-        snake = new Snake(x, y);
         return snake;
     }
 }

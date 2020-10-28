@@ -1,10 +1,8 @@
 public class Movement {
     //1 = south, 2 = west, 3 = north, 4 = east(default)
     int direction = 4;
-    boolean moved = false;
     public void handle(char input){
         Clock clock = Clock.getInstance();
-        System.out.println(input);
         switch (input){
             case 'w':
             case 'W':
@@ -39,7 +37,6 @@ public class Movement {
                 }
                 break;
         }
-        System.out.println(direction);
     }
 
     public int getDirection(){
@@ -50,26 +47,26 @@ public class Movement {
         Snake snake = Snake.getInstance();
         //update body
         for(int i = snake.size-1; i > 0; i--){
-            snake.body[i].x = snake.body[i-1].x;
-            snake.body[i].y = snake.body[i-1].y;
+            snake.body[i].setX(snake.body[i-1].getX());
+            snake.body[i].setY(snake.body[i-1].getY());
         }
         //update head
         switch (direction){
-            //north
+            //south
             case 1:
-                snake.body[0].y++;
+                snake.body[0].setY(snake.body[0].getY() + 1);
                 break;
             //west
             case 2:
-                snake.body[0].x--;
+                snake.body[0].setX(snake.body[0].getX() - 1);
                 break;
-            //south
+            //north
             case 3:
-                snake.body[0].y--;
+                snake.body[0].setY(snake.body[0].getY() - 1);
                 break;
             //east
             case 4:
-                snake.body[0].x++;
+                snake.body[0].setX(snake.body[0].getX() + 1);
                 break;
         }
         snake.selfCollide();

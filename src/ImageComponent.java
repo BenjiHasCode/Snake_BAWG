@@ -10,7 +10,7 @@ public class ImageComponent extends JComponent {
     }
 
     public void paintComponent (Graphics g){
-        g.drawImage(image, 0, 0, ImageFrame.DEFAULT_WIDTH-16, ImageFrame.DEFAULT_HEIGHT-39, this);
+        g.drawImage(image, 0, 0, Frame.DEFAULT_WIDTH-16, Frame.DEFAULT_HEIGHT-39, this);
     }
 
     public void drawScene(Snake snake, Fruit fruit){
@@ -19,15 +19,23 @@ public class ImageComponent extends JComponent {
         for (int y = 0; y < Board.getHeight(); y++) {
             for (int x = 0; x < Board.getWidth(); x++) {
                 //set head green
-                if (snake.body[0].x == x & snake.body[0].y == y){
+                if (snake.body[0].getX() == x & snake.body[0].getY() == y){
                     image.setRGB(x, y, new Color(0,255,0).getRGB());
                 }
                 //set body green
                 else if (snake.contains(x, y)){
-                    image.setRGB(x, y, new Color(102,255/*200*/,102).getRGB());
+                    for(int i = 1; i<snake.size; i++){
+                        if (snake.body[i].getX() == x && snake.body[i].getY() == y){
+                            if(!(255-i*3 < 50)){
+                                image.setRGB(x, y, new Color(0,255-i*3,0).getRGB());
+                            }else
+                                image.setRGB(x, y, new Color(0,50, 0).getRGB());
+                        }
+                    }
+                    //image.setRGB(x, y, new Color(102,255/*200*/,102).getRGB());
                 }
                 //set fruit red
-                else if (fruit.x == x && fruit.y == y){
+                else if (fruit.getX() == x && fruit.getY() == y){
                     image.setRGB(x, y, new Color(255,55,55).getRGB());
                 }
                 //set black

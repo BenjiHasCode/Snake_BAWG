@@ -1,4 +1,5 @@
 public class Board {
+    //TODO MAKE NON STATIC
     private static int width = 20;
     private static int height = 20;
 
