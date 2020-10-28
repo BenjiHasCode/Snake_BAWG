@@ -3,15 +3,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class ImageFrame extends JFrame {
-    public static final int DEFAULT_WIDTH = 1280;
-    public static final int DEFAULT_HEIGHT = 720;
+    public static final int DEFAULT_WIDTH = 720/*+16*/;
+    public static final int DEFAULT_HEIGHT = 720/*+39*/;
     ImageComponent imageComponent = new ImageComponent();
 
     public ImageFrame() {
         setResizable(false);
         setTitle("Snake");
         setVisible(true);
-        pack(); //TODO IS THIS REMOVEABLE???
         setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
         setLocationRelativeTo(null); //TODO WHAT DOES THIS DO???
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

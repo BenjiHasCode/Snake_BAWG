@@ -4,6 +4,7 @@ public class Movement {
     boolean moved = false;
     public void handle(char input){
         Clock clock = Clock.getInstance();
+        System.out.println(input);
         switch (input){
             case 'w':
             case 'W':
@@ -71,5 +72,6 @@ public class Movement {
                 snake.body[0].x++;
                 break;
         }
+        snake.selfCollide();
     }
 }
