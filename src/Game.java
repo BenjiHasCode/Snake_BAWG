@@ -17,7 +17,6 @@ public class Game {
         ImageFrame gameFrame = new ImageFrame();
         gameFrame.imageComponent.drawScene(snake, fruit);
 
-        //TODO improve clock
         Clock clock = Clock.getInstance();
         while(play){
             //update position after certain amount of time
@@ -42,7 +41,7 @@ public class Game {
             gameFrame.imageComponent.drawScene(snake, fruit);
             gameFrame.getContentPane().repaint(0,0,ImageFrame.DEFAULT_WIDTH-16, ImageFrame.DEFAULT_HEIGHT-39);
 
-            //TODO LAPPELØSNING EFTERSOM CLOCK FÅR MIN CPU OP PÅ 100%
+            //TODO Currently this loop makes my cpu go to a 100%, so we add this as a sort of buffer... FIND BETTER SOLUTION!
             try{
                 Thread.sleep(5);
             }catch(InterruptedException ignored) {

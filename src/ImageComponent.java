@@ -26,10 +26,15 @@ public class ImageComponent extends JComponent {
                 else if (snake.contains(x, y)){
                     for(int i = 1; i<snake.size; i++){
                         if (snake.body[i].getX() == x && snake.body[i].getY() == y){
+                            //Green fadeout
                             if(!(255-i*2 < 75)){
                                 image.setRGB(x, y, new Color(0,255-i*2,0).getRGB());
-                            }else
-                                image.setRGB(x, y, new Color(0,75, 0).getRGB());
+                            }
+                            //Blue fade in
+                            else if (i - 37*2 < 255)
+                                image.setRGB(x, y, new Color(0,75, i - 37*2).getRGB());
+                           else
+                               image.setRGB(x, y, new Color(0,75, 255).getRGB());
                         }
                     }
                     //image.setRGB(x, y, new Color(102,255/*200*/,102).getRGB());
