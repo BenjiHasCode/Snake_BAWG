@@ -10,7 +10,7 @@ public class ImageComponent extends JComponent {
     }
 
     public void paintComponent (Graphics g){
-        g.drawImage(image, 0, 0, Frame.DEFAULT_WIDTH-16, Frame.DEFAULT_HEIGHT-39, this);
+        g.drawImage(image, 0, 0, Frame.DEFAULT_WIDTH-14/*-16*/, Frame.DEFAULT_HEIGHT-37/*-39*/, this);
     }
 
     public void drawScene(Snake snake, Fruit fruit){
@@ -26,10 +26,10 @@ public class ImageComponent extends JComponent {
                 else if (snake.contains(x, y)){
                     for(int i = 1; i<snake.size; i++){
                         if (snake.body[i].getX() == x && snake.body[i].getY() == y){
-                            if(!(255-i*3 < 50)){
-                                image.setRGB(x, y, new Color(0,255-i*3,0).getRGB());
+                            if(!(255-i*2 < 75)){
+                                image.setRGB(x, y, new Color(0,255-i*2,0).getRGB());
                             }else
-                                image.setRGB(x, y, new Color(0,50, 0).getRGB());
+                                image.setRGB(x, y, new Color(0,75, 0).getRGB());
                         }
                     }
                     //image.setRGB(x, y, new Color(102,255/*200*/,102).getRGB());

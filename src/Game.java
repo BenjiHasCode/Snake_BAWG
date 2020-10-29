@@ -4,7 +4,7 @@ import java.awt.*;
 public class Game {
     static boolean play = true;
     //fast=75, normal=150, slow=225
-    static final int gameTick = 110;
+    static final int gameTick = 100;
 
     public static void run() {
         Snake snake = Snake.getInstance();
@@ -62,8 +62,14 @@ public class Game {
     //Shows the player how many point he/she got
     public static void showResult(){
         //show score screen
-        Frame result = new Frame();
+        JFrame result = new JFrame();
         result.setLayout(null);
+        result.setResizable(false);
+        result.setTitle("Snake");
+        result.setSize(Frame.DEFAULT_WIDTH, Frame.DEFAULT_HEIGHT);
+        result.setLocationRelativeTo(null); //Makes the window "spawn" in the middle of the screen
+        result.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
         //Text label
         JLabel winner;
@@ -75,11 +81,12 @@ public class Game {
         winner.setBounds(225, 100, 800, 250);
         result.add(winner);
 
-
         //Point label
         JLabel score = new JLabel("You got " + (Snake.getInstance().size - 3) * 5 + " Points!");
         score.setFont(new Font("Lucida Handwriting", Font.PLAIN, 48));
         score.setBounds(100-(""+Snake.getInstance().size*5).length(), 300, 800, 250);
         result.add(score);
+        result.setVisible(true);
+
     }
 }
