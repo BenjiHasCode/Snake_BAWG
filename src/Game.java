@@ -44,7 +44,7 @@ public class Game {
 
             //TODO LAPPELØSNING EFTERSOM CLOCK FÅR MIN CPU OP PÅ 100%
             try{
-                Thread.sleep(1);
+                Thread.sleep(5);
             }catch(InterruptedException ignored) {
             }
         }
