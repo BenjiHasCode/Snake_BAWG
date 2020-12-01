@@ -1,35 +1,37 @@
+import java.awt.event.KeyEvent;
+
 public class Movement {
     //1 = south, 2 = west, 3 = north, 4 = east(default)
     int direction = 4;
-    public void handle(char input){
+    public void handle(int keyCode){
         Clock clock = Clock.getInstance();
-        switch (input){
-            case 'w':
-            case 'W':
+        switch (keyCode){
+            case KeyEvent.VK_W:
+            case KeyEvent.VK_UP:
                 if(direction != 1 && direction != 3){
                     direction = 3;
                     updatePosition();
                     clock.time = System.currentTimeMillis();
                 }
                 break;
-            case 's':
-            case 'S':
+            case KeyEvent.VK_S:
+            case KeyEvent.VK_DOWN:
                 if(direction != 3 && direction != 1){
                     direction = 1;
                     updatePosition();
                     clock.time = System.currentTimeMillis();
                 }
                 break;
-            case 'd':
-            case 'D':
+            case KeyEvent.VK_D:
+            case KeyEvent.VK_RIGHT:
                 if(direction != 2 && direction != 4){
                     direction = 4;
                     updatePosition();
                     clock.time = System.currentTimeMillis();
                 }
                 break;
-            case 'a':
-            case 'A':
+            case KeyEvent.VK_A:
+            case KeyEvent.VK_LEFT:
                 if(direction != 4 && direction != 2){
                     direction = 2;
                     updatePosition();

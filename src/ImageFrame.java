@@ -12,12 +12,12 @@ public class ImageFrame extends Frame {
         addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-                Snake.getInstance().movement.handle(e.getKeyChar());
+                Snake.getInstance().movement.handle(e.getKeyCode());
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-
+                Snake.getInstance().movement.handle(e.getKeyCode());
             }
 
             @Override
